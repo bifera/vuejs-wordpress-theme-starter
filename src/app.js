@@ -17,5 +17,6 @@ new Vue({
     this.$store.commit(types.RESET_LOADING_PROGRESS);
     this.$store.dispatch("getAllCategories");
     this.$store.dispatch("getAllPages");
+    this.$store.dispatch("getAllCakes");
   }
 });

@@ -40,6 +40,29 @@ export default {
       });
   },
 
+  getCakes(cb) {
+    axios
+      .get(SETTINGS.API_BASE_PATH + "cakes?per_page=10")
+      .then(response => {
+        cb(response.data);
+      })
+      .catch(e => {
+        cb(e);
+      });
+  },
+
+  getCake(id, cb) {
+    if (_.isNull(id) || !_.isNumber(id)) return false;
+    axios
+      .get(SETTINGS.API_BASE_PATH + "cakes/" + id)
+      .then(response => {
+        cb(response.data);
+      })
+      .catch(e => {
+        cb(e);
+      });
+  },
+
   getPosts(limit, cb) {
     if (_.isEmpty(limit)) {
       let limit = 5;

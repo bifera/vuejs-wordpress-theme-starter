@@ -6,6 +6,7 @@ import Router from "vue-router";
 import Home from "../components/Home.vue";
 import Post from "../components/Post/Post.vue";
 import Page from "../components/Page/Page.vue";
+import Cake from "../components/Cake/Cake.vue";
 
 Vue.use(Router);
 
@@ -18,7 +19,8 @@ const router = new Router({
     },
     {
       // Assuming you're using the default permalink structure for posts
-      path: "/:year/:month/:day/:postSlug",
+      // path: "/:year/:month/:day/:postSlug",
+      path: "/:postSlug",
       name: "Post",
       component: Post
     },
@@ -26,6 +28,11 @@ const router = new Router({
       path: "/:pageSlug",
       name: "Page",
       component: Page
+    },
+    {
+      path: "/cake/:cakeSlug",
+      name: "Cake",
+      component: Cake
     }
   ],
   mode: "history",
@@ -53,9 +60,12 @@ router.afterEach((to, from) => {
     );
   }
 
-  const slug = _.isEmpty(to.params.postSlug)
-    ? to.params.pageSlug
-    : to.params.postSlug;
+  const slugKey = Object.keys(to.params).filter(string=>string.endsWith("Slug"))[0];
+  const slug = to.params[slugKey];
+
+  // const slug = _.isEmpty(to.params.postSlug)
+  //   ? to.params.pageSlug
+  //   : to.params.postSlug;
   body.classList.add("vue--page--" + slug);
 });
 
