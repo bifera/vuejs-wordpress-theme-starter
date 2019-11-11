@@ -18,5 +18,6 @@ new Vue({
     this.$store.dispatch("getAllCategories");
     this.$store.dispatch("getAllPages");
     this.$store.dispatch("getAllCakes");
+    this.$store.dispatch("getAllMenuItems");
   }
 });

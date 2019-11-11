@@ -19,7 +19,7 @@ export default {
 
   getPages(cb) {
     axios
-      .get(SETTINGS.API_BASE_PATH + "pages?per_page=10")
+      .get(SETTINGS.API_BASE_PATH + "pages")
       .then(response => {
         cb(response.data);
       })
@@ -76,5 +76,17 @@ export default {
       .catch(e => {
         cb(e);
       });
-  }
+  },
+
+  getMenuItems(cb) {
+    axios
+      .get(SETTINGS.API_BASE_PATH + "navigation/header_menu")
+      .then(response => {
+        cb(response.data);
+      })
+      .catch(e => {
+        cb(e);
+      });
+  },
+
 };

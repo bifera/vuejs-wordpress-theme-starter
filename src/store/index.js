@@ -8,6 +8,7 @@ import user from './modules/user'
 import post from './modules/post'
 import page from './modules/page'
 import cake from './modules/cake'
+import headerMenu from './modules/headerMenu'
 import categories from './modules/categories'
 
 Vue.use(Vuex)
@@ -29,6 +30,7 @@ export default new Vuex.Store({
     post,
     page,
     cake,
+    headerMenu,
     categories
   },
   strict: debug,
